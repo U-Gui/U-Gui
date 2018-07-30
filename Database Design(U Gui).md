@@ -4,7 +4,7 @@
 
 | Name         | type          | constraint  | Instroduction   |
 | ------------ | ------------- | ----------- | --------------- |
-| userId       | int           | primary key |                 |
+| userId       | varchar(20)   | primary key | openId          |
 | userPhone    | varchar(11)   |             |                 |
 | userSex      | bit           |             | 0-male 1-female |
 | userBalance  | Decimal(20,2) |             | money           |
@@ -38,13 +38,19 @@
 
 * BoxInfo
 
-| Name          | type        | constraint  | Instroduction                                                |
-| ------------- | ----------- | ----------- | ------------------------------------------------------------ |
-| boxId         | int         | primary key |                                                              |
-| boxlocationId | int         | foreign key | BoxLocation(boxlocationId)                                   |
-| boxInfo       | varchar(20) |             | <b>I didn`t think about it for a while,but  just reserved it.</b> |
-| boxStatus     | int         |             | 0-Idle 1-used 2-broken                                       |
-| boxType       | int         |             | <b>I didn`t think about it for a while,but  just reserved it.</b> |
+| Name      | type | constraint  | Instroduction          |
+| --------- | ---- | ----------- | ---------------------- |
+| boxId     | int  | primary key |                        |
+| boxStatus | int  |             | 0-Idle 1-used 2-broken |
+| boxType   | int  |             | 0-small 1-middle 2-big |
+| cabinetId | int  | foreign key | Cabinet(cabinetId)     |
+
+* Cabinet
+
+| Name          | type | constraint  | Instroduction              |
+| ------------- | ---- | ----------- | -------------------------- |
+| cabinetId     | int  | primary key |                            |
+| boxLocationId | int  | Foreign key | BoxLocation(boxLocationId) |
 
 * BoxUseRecord
 
